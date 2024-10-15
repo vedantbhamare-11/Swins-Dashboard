@@ -5,7 +5,9 @@ import DashboardCard from '@/components/DashboardCard';
 import DynamicLineChart from '@/components/DynamicLineChart';
 import RecentReviews from '@/components/RecentReviews';
 import { Button } from "@/components/ui/button";
+import NavLink from '@/components/NavLink';
 import { DatePickerWithRange } from '@/components/ui/DatePickerWithRange';
+import { NavigationMenu, NavigationMenuList } from '@radix-ui/react-navigation-menu';
 
 interface DashboardCardsData {
   positiveReviews: number;
@@ -38,6 +40,9 @@ const Dashboard: React.FC = () => {
   const [recentReviews, setRecentReviews] = useState<RecentReview[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Add state for activeTab
+  const [activeTab, setActiveTab] = useState<string>('overview');
 
   // Fetch all the data from different APIs
   useEffect(() => {
@@ -88,6 +93,16 @@ const Dashboard: React.FC = () => {
           <Button className="ml-4">Download</Button>
         </div>
       </div>
+
+      {/* Navigation Menu */}
+      <NavigationMenu className="mt-4 my-4 mx-4 md:mx-10 bg-[#FDF9FF] p-2 rounded">
+        <NavigationMenuList className="flex gap-4 sm:gap-1 flex-wrap md:flex-wrap">
+          <NavLink href="" isActive={activeTab === 'overview'} onClick={() => setActiveTab('overview')}>Overview</NavLink>
+          <NavLink href="" isActive={activeTab === 'negative'} onClick={() => setActiveTab('negative')}>Negative Reviews</NavLink>
+          <NavLink href="" isActive={activeTab === 'flagged'} onClick={() => setActiveTab('flagged')}>Flagged Reviews</NavLink>
+          <NavLink href="" isActive={activeTab === 'escalated'} onClick={() => setActiveTab('escalated')}>Escalated Reviews</NavLink>
+        </NavigationMenuList>
+      </NavigationMenu>
 
       {/* Cards Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4 mx-4 md:mx-10">
