@@ -17,25 +17,25 @@ const SignIn: React.FC = () => {
 
   const handleSignIn = () => {
     // Add your sign-in logic here (e.g., API call for authentication)
-
+    
     // On successful authentication, redirect to the dashboard
     router.push('/dashboard'); // Redirect to the dashboard page
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left Part: Black Background with Logo */}
-      <div className="w-1/2 bg-black relative flex flex-col justify-between p-8">
+      <div className="md:w-1/2 bg-black relative flex flex-col justify-between p-8">
         {/* Logo */}
         <Image
           src={Logo}
           alt="Small Wins Logo"
           width={170}
           height={50}
+          className="mb-4"
         />
 
-        {/* Quote at the bottom */}
-        <div className="text-white absolute bottom-4 left-8 right-8">
+        <div className="hidden md:block text-white absolute bottom-4 left-8 right-8">
           <p className="italic">
             “This Library has saved me countless hours of work and helped me
             deliver stunning designs to my clients faster than ever before.”
@@ -45,7 +45,7 @@ const SignIn: React.FC = () => {
       </div>
 
       {/* Right Part: Sign In Form */}
-      <div className="w-1/2 bg-white flex flex-col justify-center p-8 relative">
+      <div className="md:w-1/2 bg-white flex flex-col justify-center p-8 relative">
         {/* Sign Up Link in the top-right corner */}
         <div className="absolute top-4 right-4">
           <Link href="/signup" className="hover:underline">
@@ -54,7 +54,7 @@ const SignIn: React.FC = () => {
         </div>
 
         {/* Sign In Form */}
-        <div className="w-[60%] mx-auto">
+        <div className="w-full md:w-[60%] mx-auto">
           {/* Heading */}
           <h1 className="text-2xl font-bold mb-2 text-center">Log In</h1>
           <p className="text-[#71717A] mb-6 text-center">
@@ -99,6 +99,15 @@ const SignIn: React.FC = () => {
             <Link href="#" className="underline">Forgot Password?</Link>
           </p>
         </div>
+      </div>
+
+      {/* Footer for the Quote on small screens */}
+      <div className="block md:hidden text-white bg-black p-4 text-center mt-auto">
+        <p className="italic">
+          “This Library has saved me countless hours of work and helped me
+          deliver stunning designs to my clients faster than ever before.”
+        </p>
+        <p className="mt-2">— Sofia Davis</p>
       </div>
     </div>
   );

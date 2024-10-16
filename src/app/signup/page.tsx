@@ -8,42 +8,39 @@ import Link from "next/link";
 import { Github } from "lucide-react";
 import Image from "next/image"; // Import Next.js Image component
 import Logo from "@/app/assets/logo.png"; // Importing the image from the src folder
-import { useRouter } from 'next/navigation'; // Import useRouter
 
 const SignUp: React.FC = () => {
-  const router = useRouter(); // Initialize the useRouter hook
-
   const handleCreateAccount = () => {
     // Add your account creation logic here (e.g., API call for registration)
-
-    // After successful account creation, redirect to SignIn2 page
-    router.push('/signup2'); // Redirect to the SignIn2 page
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Part: Black Background with Logo and Quote */}
-      <div className="w-1/2 bg-black relative flex flex-col justify-between p-8">
+    <div className="min-h-screen flex flex-col md:flex-row">
+      {/* Left Part: Black Background with Logo */}
+      <div className="md:w-1/2 bg-black relative flex flex-col justify-between p-8">
         {/* Logo */}
         <Image
-          src={Logo} // Update the path to point to assets folder
+          src={Logo}
           alt="Small Wins Logo"
-          width={170} // Adjust width as needed
-          height={50} // Adjust height as needed
+          width={170}
+          height={50}
+          className="mb-4" // Add some margin below the logo
         />
         
-        {/* Quote at the bottom */}
-        <div className="text-white absolute bottom-4 left-8 right-8">
+        {/* Quote at the bottom for larger screens */}
+        <div className="text-white hidden md:block absolute bottom-4 left-8 right-8">
           <p className="italic">
             “This Library has saved me countless hours of work and helped me
             deliver stunning designs to my clients faster than ever before.”
           </p>
-          <p className="mt-2 text-right">— Sofia Davis</p>
+          <p className="mt-2 text-right text-xs">— Sofia Davis</p>
         </div>
+
+        
       </div>
 
       {/* Right Part: Sign Up Form */}
-      <div className="w-1/2 bg-white flex flex-col justify-center p-8 relative">
+      <div className="md:w-1/2 bg-white flex flex-col justify-center p-8 relative">
         {/* Login Link in the top-right corner */}
         <div className="absolute top-4 right-4">
           <Link href="/signin" className="hover:underline">
@@ -52,7 +49,7 @@ const SignUp: React.FC = () => {
         </div>
 
         {/* Sign Up Form */}
-        <div className="w-[60%] mx-auto">
+        <div className="w-full md:w-[60%] mx-auto">
           {/* Heading */}
           <h1 className="text-2xl font-bold mb-2 text-center">Create an account</h1>
           <p className="text-[#71717A] mb-6 text-center">
@@ -93,6 +90,14 @@ const SignUp: React.FC = () => {
             <Link href="#" className="underline">Privacy Policy</Link>.
           </p>
         </div>
+      </div>
+      {/* Quote for smaller screens */}
+      <div className="block md:hidden text-white bg-black p-4 text-center mt-auto">
+        <p className="italic">
+          “This Library has saved me countless hours of work and helped me
+          deliver stunning designs to my clients faster than ever before.”
+        </p>
+        <p className="mt-2">— Sofia Davis</p>
       </div>
     </div>
   );
