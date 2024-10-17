@@ -8,11 +8,20 @@ import Link from "next/link";
 import { Github } from "lucide-react";
 import Image from "next/image"; // Import Next.js Image component
 import Logo from "@/app/assets/logo.png"; // Importing the image from the src folder
+import { useRouter } from 'next/navigation'; // Import useRouter
+
 
 const SignUp: React.FC = () => {
+
+const router = useRouter(); // Initialize the useRouter hook
+
   const handleCreateAccount = () => {
-    // Add your account creation logic here (e.g., API call for registration)
+    // Add your sign-in logic here (e.g., API call for authentication)
+    
+    // On successful authentication, redirect to the dashboard
+    router.push('/signup2'); // Redirect to the dashboard page
   };
+
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row">

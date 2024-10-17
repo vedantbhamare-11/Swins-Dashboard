@@ -97,10 +97,10 @@ const Dashboard: React.FC = () => {
       {/* Navigation Menu */}
       <NavigationMenu className="mt-4 my-4 mx-4 md:mx-10 bg-[#FDF9FF] p-2 rounded">
         <NavigationMenuList className="flex gap-4 sm:gap-1 flex-wrap md:flex-wrap">
-          <NavLink href="" isActive={activeTab === 'overview'} onClick={() => setActiveTab('overview')}>Overview</NavLink>
-          <NavLink href="" isActive={activeTab === 'negative'} onClick={() => setActiveTab('negative')}>Negative Reviews</NavLink>
-          <NavLink href="" isActive={activeTab === 'flagged'} onClick={() => setActiveTab('flagged')}>Flagged Reviews</NavLink>
-          <NavLink href="" isActive={activeTab === 'escalated'} onClick={() => setActiveTab('escalated')}>Escalated Reviews</NavLink>
+          <NavLink href="#" isActive={activeTab === 'overview'} onClick={() => setActiveTab('overview')}>Overview</NavLink>
+          <NavLink href="#" isActive={activeTab === 'negative'} onClick={() => setActiveTab('negative')}>Negative Reviews</NavLink>
+          <NavLink href="#" isActive={activeTab === 'flagged'} onClick={() => setActiveTab('flagged')}>Flagged Reviews</NavLink>
+          <NavLink href="#" isActive={activeTab === 'escalated'} onClick={() => setActiveTab('escalated')}>Escalated Reviews</NavLink>
         </NavigationMenuList>
       </NavigationMenu>
 
